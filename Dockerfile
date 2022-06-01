@@ -1,4 +1,5 @@
 FROM golang:1.11-alpine
+RUN apk add build-base
 
 # Set maintainer label: maintainer=[YOUR-EMAIL]
 LABEL maintainer=marcel.ciesla1707@gmail.com
@@ -10,15 +11,16 @@ WORKDIR /src
 COPY main.go ./
 COPY main_test.go ./
 
+RUN go mod init github.com/Marcel1707/cd2020-ex04
+RUN go mod tidy
+
 # List items in the working directory (ls)
 RUN ls
-RUN go mod init github.com/Marcel1707/cd2020-ex04
-RUN go tidy
+
+RUN go test -v
 
 # Build the GO app as myapp binary and move it to /usr/
 RUN go build -o /usr/myapp
-
-RUN go test -v
 
 #Expose port 8888
 EXPOSE 8888
