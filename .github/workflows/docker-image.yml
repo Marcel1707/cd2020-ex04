@@ -24,7 +24,6 @@ jobs:
         name: Build and export to Docker
         uses: docker/build-push-action@v3
         with:
-          context: .
           load: true
           file: Dockerfile
           
