@@ -30,9 +30,7 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v3
-        env:
-          GIT_SHA: "$(git rev-parse --short HEAD)"
         with:
           push: true
-          tags: marcel1707/demo:latest, marcel1707/demo:$GIT_SHA
+          tags: marcel1707/demo:latest, marcel1707/demo:${{github.sha}}
           
