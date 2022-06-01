@@ -19,5 +19,7 @@ jobs:
         GIT_SHA="$(git rev-parse --short HEAD)"
         echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
         docker build . --file Dockerfile --tag marcel1707/demo:latest --tag marcel1707/demo:$GIT_SHA
+        docker push marcel1707/demo:latest
+        docker push marcel1707/demo:$GIT_SHA
         
       
