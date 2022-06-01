@@ -16,8 +16,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-        GIT_SHA="$(git rev-parse --short HEAD)" 
-        echo ${{ secrets.DOCKERHUB_TOKEN }} 
-        docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        docker build . --file Dockerfile --tag marcel1707/demo:latest marcel1707/demo:$GIT_SHA      
+        echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        docker build . --file Dockerfile --tag marcel1707/demo:latest
       
