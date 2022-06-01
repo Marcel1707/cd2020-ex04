@@ -42,6 +42,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'config'
+          hide-progress: false
           format: 'table'
           ignore-unfixed: true
           severity: 'CRITICAL, HIGH'
